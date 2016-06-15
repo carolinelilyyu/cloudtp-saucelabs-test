@@ -8,6 +8,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -17,11 +18,15 @@ import java.util.concurrent.TimeUnit;
 public class MyFirstWebDriverTest {
     @Test
     public void checkSeleniumHQinFirefox(){
+        WebDriver driver = null;
+        DesiredCapabilities capability = DesiredCapabilities.firefox();
 
+        try {
+            driver = new RemoteWebDriver(new URL("http://"+("SAUCE_USERNAME")+":"+("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub"), capability);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
-        WebDriver driver = new RemoteWebDriver(
-                new URL("http://"+System.getenv("SAUCE_USERNAME")+":"+System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub"),
-                        DesiredCapabilities.firefox());
         //driver.get("http://seleniumhq.org");
         WebElement downloadTab = driver.findElement(By.id("menu_download"));
         WebElement downloadLink = downloadTab.findElement(By.tagName("a"));
