@@ -4,7 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
+
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -13,8 +17,12 @@ import java.util.concurrent.TimeUnit;
 public class MyFirstWebDriverTest {
     @Test
     public void checkSeleniumHQinFirefox(){
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://seleniumhq.org");
+
+
+        WebDriver driver = new RemoteWebDriver(
+                new URL("http://"+System.getenv("SAUCE_USERNAME")+":"+System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub"),
+                        DesiredCapabilities.firefox());
+        //driver.get("http://seleniumhq.org");
         WebElement downloadTab = driver.findElement(By.id("menu_download"));
         WebElement downloadLink = downloadTab.findElement(By.tagName("a"));
         downloadLink.click();
