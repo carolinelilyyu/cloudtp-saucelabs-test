@@ -20,7 +20,7 @@ public class MyFirstWebDriverTest {
     public void checkSeleniumHQinFirefox(){
         WebDriver driver = null;
         DesiredCapabilities capability = DesiredCapabilities.firefox();
-
+        capability.setCapability("build", System.getenv("JOB_NAME") + "_" + System.getenv("BUILD_NUMBER"));
         try {
             driver = new RemoteWebDriver(new URL("http://"+System.getenv("SAUCE_USERNAME")+":"+System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub"), capability);
         } catch (MalformedURLException e) {
