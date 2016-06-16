@@ -22,7 +22,7 @@ public class MyFirstWebDriverTest {
         DesiredCapabilities capability = DesiredCapabilities.firefox();
 
         try {
-            driver = new RemoteWebDriver(new URL("http://"+("SAUCE_USERNAME")+":"+("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub"), capability);
+            driver = new RemoteWebDriver(new URL("http://"+System.getenv("SAUCE_USERNAME")+":"+System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub"), capability);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
