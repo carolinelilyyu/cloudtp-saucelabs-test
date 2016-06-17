@@ -10,16 +10,25 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Yu on 6/15/16.
  */
 public class MyFirstWebDriverTest {
+
+    protected String browser;
+    protected String os;
+    protected String version;
+    protected String deviceName;
+    protected String sessionId;
+    protected WebDriver driver;
     @Test
     public void checkSeleniumHQinFirefox(){
-        WebDriver driver = null;
-        DesiredCapabilities capability = DesiredCapabilities.firefox();
+        driver = null;
+        DesiredCapabilities capability = DesiredCapabilities.firefox()//new DesiredCapabilities();
+
         capability.setCapability("build", System.getenv("JOB_NAME") + "_" + System.getenv("BUILD_NUMBER"));
         try {
             driver = new RemoteWebDriver(new URL("http://"+System.getenv("SAUCE_USERNAME")+":"+System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub"), capability);
@@ -39,4 +48,14 @@ public class MyFirstWebDriverTest {
 
 
     }
+
+    public static LinkedList browserStrings(){
+        LinkedList browsers = new LinkedList();
+
+        browsers.add(new String[] {"Windows 7", "41", "chrome", null, null});
+        browsers.add(new String[] {"OSX 10.8", "7", "safari", null, null});
+        return browsers;
+    }
+
+
 }
