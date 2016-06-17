@@ -27,7 +27,7 @@ public class MyFirstWebDriverTest {
     @Test
     public void checkSeleniumHQinFirefox(){
         driver = null;
-        DesiredCapabilities capability = DesiredCapabilities.firefox()//new DesiredCapabilities();
+        DesiredCapabilities capability = DesiredCapabilities.firefox();//new DesiredCapabilities();
 
         capability.setCapability("build", System.getenv("JOB_NAME") + "_" + System.getenv("BUILD_NUMBER"));
         try {
