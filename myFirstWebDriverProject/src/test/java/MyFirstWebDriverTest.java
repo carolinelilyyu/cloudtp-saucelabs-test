@@ -29,7 +29,7 @@ public class MyFirstWebDriverTest {
     public void checkSeleniumHQinFirefox(){
         driver = null;
         DesiredCapabilities capability = DesiredCapabilities.firefox();//new DesiredCapabilities();
-        capability.setBrowserName(System.getenv("SELENIUM_BROWSER"));
+        //capability.setBrowserName(System.getenv("SELENIUM_BROWSER"));
         capability.setVersion(System.getenv("SELENIUM_VERSION"));
         capability.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
         capability.setCapability("build", System.getenv("JOB_NAME") + "_" + System.getenv("BUILD_NUMBER"));
