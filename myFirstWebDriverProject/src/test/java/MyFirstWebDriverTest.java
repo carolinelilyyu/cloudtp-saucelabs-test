@@ -31,7 +31,7 @@ public class MyFirstWebDriverTest {
         DesiredCapabilities capability = new DesiredCapabilities(); //.firefox();
         capability.setBrowserName("safari");//Capability(CapabilityType.BROWSER_NAME, "firefox");//System.getenv("SAUCE_ONDEMAND_BROWSERS"));
         //capability.setVersion(System.getenv("SELENIUM_VERSION"));
-        capability.setCapability(CapabilityType.PLATFORM, System.getenv("Windows 10"));
+        capability.setCapability(CapabilityType.PLATFORM, System.getenv("VISTA"));
         capability.setCapability("build", System.getenv("JOB_NAME") + "_" + System.getenv("BUILD_NUMBER"));
         try {
             driver = new RemoteWebDriver(new URL("http://"+System.getenv("SAUCE_USERNAME")+":"+System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub"), capability);
